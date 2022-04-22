@@ -16,10 +16,9 @@ if __name__ == '__main__':
         elif sys.argv[1] == '--update':
             valid_column = any([x.value == sys.argv[2] for x in Column])
             if len(sys.argv) > 4 and valid_column and sys.argv[3].isnumeric():
-                print(requests.
-                put(f'http://127.0.0.1:8000/update/{sys.argv[2]}/{sys.argv[3]}/', 
+                a = requests.put(f'http://127.0.0.1:8000/update/{sys.argv[2]}/{sys.argv[3]}/', 
                 json={'value': sys.argv[4]})
-                .json()['message'])
+                print(a.status_code, a.text, sep=" | ")
         elif sys.argv[1] == '--delete':
             if sys.argv[2].isnumeric():
                 print(requests.delete(f'http://127.0.0.1:8000/delete/{sys.argv[2]}/').json()['message'])
