@@ -3,7 +3,7 @@ import requests
 import sys
 
 
-URL = 'http://127.0.0.1:8000'
+URL = 'https://pkl-crud-api.herokuapp.com'
 
 class Column(str, Enum):
     Name = "name"

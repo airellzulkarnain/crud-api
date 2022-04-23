@@ -61,5 +61,5 @@ async def delete_db(id: int):
 
 @app.get('/select/')
 async def select_db():
-    cursor.execute('SELECT id, name, username FROM "user"')
+    cursor.execute('SELECT * FROM "user"')
     return {"message": "query success", "row": cursor.fetchall()}
