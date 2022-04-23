@@ -2,12 +2,15 @@ from enum import Enum
 from fastapi import FastAPI, Body, Path
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
-import mysql.connector
+import psycopg2
+import os
 
 
 origins = [
     'http://127.0.0.1:8080', 
 ]
+
+DATABASE_URL = os.environ['DATABASE_URL']
 
 class Column(str, Enum):
     Name = "name"
@@ -19,11 +22,7 @@ class User(BaseModel):
     username: str
     password: str
 
-db = mysql.connector.connect(
-    host="localhost", 
-    user="root", 
-    password="airell271005", 
-    database="CRUD")
+db = psycopg2.connect(DATABASE_URL, sslmode='require')
 
 app = FastAPI()
 

@@ -5,8 +5,9 @@ name = "pypi"
 
 [packages]
 fastapi = {extras = ["all"], version = "*"}
-mysql-connector-python = "*"
 python-multipart = "*"
+gunicorn = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 
